@@ -7,7 +7,7 @@ def study_schedule(permanence_period, target_time):
     Retorna a quantidade de estudantes presentes em um target_time especifico
     ou Node caso receba um valor invalido
 
-    Um estudante só estava permanente em um dado periodo target_time se:
+    Um estudante só esté permanente em um dado periodo target_time se:
     1) O target_time é igual ao horário de entrada do estudante
     2) O target_time é igual ao horário de saída do estudante
     3) O target_time é menor que o horário de entrada do estudante e
