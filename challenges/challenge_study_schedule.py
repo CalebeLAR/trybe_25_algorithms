@@ -24,10 +24,7 @@ def study_schedule(permanence_period, target_time):
         if not are_integers or (exit < entry) or entry < 0 or exit < 0:
             return None
 
-        p1 = (entry == target_time) or (exit == target_time)
-        p2 = (entry < target_time) and (exit > target_time)
-
-        if p1 or p2:
+        if (entry <= target_time <= exit):
             number_of_students_in_period += 1
 
     return number_of_students_in_period
