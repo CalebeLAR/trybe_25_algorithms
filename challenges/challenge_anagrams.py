@@ -54,7 +54,7 @@ map_letters = {
 }
 
 
-map_low_letters = [
+letters_lowercase_maped = [
     "a",
     "b",
     "c",
@@ -115,34 +115,15 @@ def merge(numbers, start, mid, end):
             right_index = right_index + 1
 
 
-def case_firt(first_string, second_string):
-    second_maped = [map_letters[letter] for letter in second_string]
-    merge_sort(second_maped)
+def sort_string(string):
+    string_maped = [map_letters[letter] for letter in string]
+    merge_sort(string_maped)
 
-    sorted_second_string = ""
-    for number in second_maped:
-        sorted_second_string += map_low_letters[number]
+    sorted_string = ""
+    for number in string_maped:
+        sorted_string += letters_lowercase_maped[number]
 
-    return (
-        first_string,
-        sorted_second_string,
-        False,
-    )
-
-
-def case_second(first_string, second_string):
-    first_maped = [map_letters[letter] for letter in first_string]
-    merge_sort(first_maped)
-
-    sorted_first_string = ""
-    for number in first_maped:
-        sorted_first_string += map_low_letters[number]
-
-    return (
-        sorted_first_string,
-        second_string,
-        False,
-    )
+    return sorted_string
 
 
 def is_anagram(first_string, second_string):
@@ -155,24 +136,21 @@ def is_anagram(first_string, second_string):
     respectiva letra no alfabeto.
     """
     if first_string == "" or first_string == " ":
-        return case_firt(first_string, second_string)
+        return (
+            first_string,
+            sort_string(second_string),
+            False
+        )
 
     if second_string == "" or second_string == " ":
-        return case_second(first_string, second_string)
+        return (
+            sort_string(first_string),
+            second_string,
+            False
+        )
 
-    first_maped = [map_letters[letter] for letter in first_string]
-    second_maped = [map_letters[letter] for letter in second_string]
-
-    merge_sort(first_maped)
-    merge_sort(second_maped)
-
-    sorted_first_string = ""
-    for number in first_maped:
-        sorted_first_string += map_low_letters[number]
-
-    sorted_second_string = ""
-    for number in second_maped:
-        sorted_second_string += map_low_letters[number]
+    sorted_first_string = sort_string(first_string)
+    sorted_second_string = sort_string(second_string)
 
     return (
         sorted_first_string,
